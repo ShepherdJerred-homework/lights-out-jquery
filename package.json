@@ -1,0 +1,30 @@
+{
+  "name": "lights-out-jquery",
+  "version": "1.0.0",
+  "description": "Lights Out for the browser with jQuery",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShepherdJerred-homework/lights-out-jquery.git"
+  },
+  "author": "Jerred Shepherd",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/ShepherdJerred-homework/lights-out-jquery/issues"
+  },
+  "homepage": "https://github.com/ShepherdJerred-homework/lights-out-jquery#readme",
+  "devDependencies": {
+    "tslint": "^5.9.1",
+    "tslint-config-semistandard": "^7.0.0"
+  },
+  "dependencies": {
+    "@types/jquery": "^3.3.1",
+    "@types/node": "^9.6.2",
+    "jquery": "^3.3.1",
+    "tslib": "^1.9.0",
+    "typescript": "^2.8.1"
+  }
+}
