@@ -1,0 +1,241 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="../standard.css" type="text/css">
+    <title>Comp 431: Project</title>
+    <base target="_top"/>
+    <style>
+      pre { margin: 0 }
+      figure {
+          position: relative; width: 570px;
+          font-size: 11pt;
+      }
+      .layout div {
+          padding-left: 3ex;
+          padding-top: 4pt;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      For this project we will be creating a stand-alone web page that plays a
+      game called <dfn>Lights Out</dfn>.
+    </p>
+    <h3>Gameplay</h3>
+    <p>
+      Lights Out is played using a grid of &ldquo;lights&rdquo; that are
+      either on or off.  When you click a light, the light you clicked
+      on <em>and all surrounding lights</em> are each toggled between on and
+      off.  Surrounding lights are defined as those immediately adjacent, as
+      well as those diagonally adjacent.
+    </p>
+    <p>
+      Figure 1 illustrates how the toggling occurs.  On the left you can see
+      the initial configuration of the game board.  Clicking on the light
+      outlined in blue results in the game board on the right in which all the
+      surrounding lights have been toggled.  The lights which have been
+      toggled are outlined in orange.
+    </p>
+    <figure>
+      <img src="lightsout/transition_1.png"/>
+      <figcaption><strong>Figure 1.</strong>  Clicking on the square outlined
+      in blue (left) results in toggling all lights outlined in orange
+      (right).</figcaption>
+    </figure>
+    <p>
+      Clicking on a light on the inside of the board will result in toggling a
+      3&times;3 square of lights.  Note, however, that clicking on a light
+      around the edge of the board will result in toggling only a 3&times;2,
+      2&times;3, or 2&times;2 rectangle of lights, since they are not
+      surrounded by as many lights.
+    </p>
+    <p>
+      This is illustrated in Figure 2.  Again, the game board on the left
+      shows the initial configuration.  Clicking in the light outlined in blue
+      results in the game board on the right.  This time, however, only a
+      2&times;2 square of lights have been toggled, since only those are the
+      only lights surrounding the one clicked.
+    </p>
+    <figure>
+      <img src="lightsout/transition_2.png"/>
+      <figcaption><strong>Figure 2.</strong>  Clicking on a square along the
+      edge (left) results in toggling a smaller area of lights (right).</figcaption>
+    </figure>
+    <p>
+      The goal of the game is to get all the lights turned off.  Note that
+      this may not be possible if you begin with a random configuration of
+      lights.  Thus, when creating a new game you should start with all lights
+      out and then &ldquo;shuffle&rdquo; the board by clicking repeatedly on
+      random lights.  This method will create a game which is guaranteed to be
+      solvable.
+    </p>
+    <h3>Requirements</h3>
+    <h4>Project</h4>
+    <ul class="spaced">
+      <li>
+        This will not be an Express project.  All your code will run in the
+        browser; you will not run a server.
+      </li>
+      <li>
+        You should write your project as a single TypeScript file; we will not
+        use modules so that we do not have to use WebPack.  Before I access
+        your web page I will run your code through the TypeScript compiler.
+      </li>
+      <li>
+        You <em>must</em> use jQuery (and only jQuery) to implement your
+        project.  You may occasionally interact with the DOM directly, but in
+        general you will be penalized for doing things yourself that jQuery
+        could do for you.  Note that you will need the
+        file <code>jquery.d.ts</code> in your project so that TypeScript will
+        know the correct types for jQuery.
+      </li>
+      <li>
+        Your HTML file should contain <em>only</em> HTML, not JavaScript or
+        CSS.  That means your tags may not have event-handling attributes
+        (<code>onclick</code>, <code>onsubmit</code>, etc.)
+        nor <code>style</code> attributes.  They may, however,
+        have <code>id</code> and <code>class</code> attributes.  <em>All</em>
+        your CSS should be in a separate CSS file, and <em>all</em> your
+        JavaScript should be in a separate JavaScript file (compiled from
+        TypeScript).
+      </li>
+      <li>
+        Your project should have the following layout:
+        <div class="layout">
+          <div>
+            &#x1f4c1; <code>src</code> &mdash; TypeScript code
+            <div>
+              &#128196; <code>jquery.d.ts</code> &mdash; type definitions for
+              jQuery
+            </div>
+            <div>
+              &#128196; <code>lightsout.ts</code> &mdash; your code for this
+              project (you can name this file whatever you like; you may have
+              multiple source files)
+            </div>
+          </div>
+          <div>
+            &#x1f4c1; <code>www</code> &mdash; web accessible files
+            <div>
+              &#x1f4c1; <code>lib</code> &mdash; JavaScript code compiled from
+              TypeScript (delete before submitting; I will compile)
+              <div>
+                &#128196; <code>lightsout.js</code> &mdash; the compiled
+                TypeScript code
+              </div>
+              <div>
+                &#128196; <code>lightsout.js.map</code> &mdash; the source map
+                to your TypeScript code
+              </div>
+            </div>
+            <div>
+              &#128196; <code>jquery.js</code> &mdash; your jQuery
+              implementation
+            </div>
+            <div>
+              &#128196; <code>lightsout.css</code> &mdash; CSS used by your
+              lights out application
+            </div>
+            <div>
+              &#128196; <code>lightsout.html</code> &mdash; the entry point
+              for your application (I will open this in a web browser)
+            </div>
+          </div>
+          <div>
+            &#128196; <code>tsconfig.json</code> &mdash; TypeScript project
+            configuration
+          </div>
+        </div>
+        <p class="top">
+          You may use this as a starter project:
+        </p>
+        <div>
+          <a href="lightsout/starter.zip">https://cs.harding.edu/gfoust/classes/comp431/lightsout/starter.zip</a>
+        </div>
+      </li>
+    </ul>
+    <h4>Game</h4>
+    <ul class="spaced">
+      <li>
+        Your game should be accessed by opening <code>lightsout.html</code> in a
+        web browser.
+      </li>
+      <li>
+        Initially your page should contain only a form that allows the user to
+        set the dimensions of the board.  You should use number inputs and use
+        the HTML <code>min</code> / <code>max</code> attributes to keep the
+        number of rows and columns each between 6 and 20.  They should
+        initially be set to 8.
+        <div><img src="lightsout/dimensions.png"/></div>
+      </li>
+      <li>
+        Submitting the form should not leave the page, but should instead
+        create a new gameboard of the specified dimensions.  The board should
+        be in a random yet solvable configuration, as described in the
+        gameplay section.
+        <div><img src="lightsout/gameboard.png"/></div>
+        Note that submitting the form at any time should throw
+        away the current game and create a new one of the dimensions
+        specified in the form.
+      </li>
+      <li>
+        You may decide what your game board looks like, but each light should
+        be easy to see and to click on, and it should be clear which lights
+        are on and which are off.
+      </li>
+      <li>
+        Moving the mouse over a light should change it's visual appearance
+        somehow so that it is clear which light the cursor is over.  For
+        example, you might change the color of its border to blue, as shown in
+        Figure 1.
+      </li>
+      <li>
+        Clicking on a light should toggle it and the surrounding lights, as
+        described in the gameplay section above.
+      </li>
+      <li>
+        When clicking on a light results in all the lights being turned off
+        you should display a message to tell the user he won.  You should also
+        place a <code>&lt;div&gt;</code> over the board so that the user
+        cannot interact with it anymore.
+        <div><img src="lightsout/game_over.png"/></div>
+      </li>
+      <li>
+        <em>All</em> of your CSS and jQuery selectors should begin with an id.
+        This will ensure that your code will continue to work even if other
+        elements are added to the page.  For example, do not use the
+        selector <code>"td"</code> to select all the cells in your gameboard;
+        this would give bad results if we later added an additional table to
+        the page.  Instead, give your table an id, such as <code>board</code>,
+        and then use the selector <code>"#board td"</code> to ensure you only
+        select the desired table cells.
+      </li>
+    </ul>
+    <h3>Implementation</h3>
+    <p>
+      One could certainly argue that the correct way to implement this project
+      is using the MVC design pattern.  Doing so would require making a model
+      for the gameboard (e.g., a two-dimensional array of booleans), writing
+      code that maps the model to the DOM (e.g., creating / updating an HTML
+      table to match the array), and then writing controller functions that
+      update the model in response to user actions.
+    </p>
+    <p>
+      However, this project was intentionally designed (1) to be small and (2)
+      to make heavy use of jQuery.  For that reason, I recommend that you use
+      the DOM itself as your representation of the gameboard:
+    </p>
+    <ul class="spaced">
+      <li>Create an HTML table for the board with a cell for each light</li>
+      <li>Turn a light on by adding a CSS class to its table cell</li>
+      <li>Use the jQuery <code>hasClass</code> function to test whether a
+        light is on or off.  Remember that if a JQuery object holds multiple
+        cells, the <code>hasClass</code> method will return true
+        if <em>any</em> of the cells have the class.
+      </li>
+      <li>
+        When creating a new board you can "shuffle" it by picking random cells
+        and invoking their <code>click</code> event.
+      </li>
+    </ul>
+  </body>
+</html>
