@@ -196,7 +196,7 @@ function hasWon (game: Game): boolean {
   for (let row of game.board) {
     for (let rowNode of row) {
       if (rowNode.hasClass('on')) {
-        return true;
+        return false;
       }
     }
   }
