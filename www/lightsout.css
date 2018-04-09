@@ -1,44 +1,66 @@
-#board {
+#container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 100vw;
+    min-height: 100vh;
+}
+
+#container h1 {
+    font-family: 'Helvetica', sans-serif;
+}
+
+#container p {
+    font-family: 'Times New Roman', serif;
+}
+
+#settings {
+    padding-bottom: 20px;
+}
+
+#game {
     position: relative;
     display: inline-block;
 }
 
-#board .node {
-    padding: 20px;
+#game .node {
+    padding: 15px;
     background: #000;
-    border: 4px solid #fff;
+    border: 2px solid #fff;
 }
 
-#board .node:hover {
+#game .node:hover {
     background: #aaa;
 }
 
-#board .on {
+#game .on {
     background: #fff;
-    border: 4px solid #000;
+    border: 2px solid #000;
 }
 
-#board table {
+#game table {
     border-collapse: collapse;
     height: 100%;
 }
 
-#victory {
+#game .victory {
     display: none;
     position: absolute;
     top: 0;
     right: 0;
     left: 0;
     bottom: 0;
-    background: rgba(77, 77, 77, .75);
+    background: rgba(77, 77, 77, .95);
     justify-content: center;
     align-items: center;
 }
 
-#victory h1 {
+#game .victory h1 {
     color: #fff;
+    font-family: 'Helvetica', sans-serif;
 }
 
-#victory.active {
+#game .victory.active {
     display: flex;
 }

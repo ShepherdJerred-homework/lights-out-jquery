@@ -2,18 +2,30 @@
 <meta charset="utf-8">
 <title>Lights Out</title>
 <link rel="stylesheet" href="lightsout.css">
-<div id="settings">
-    <form>
-        Rows: <input type="number" name="maxX" min="6" max="20" value="8">
-        Columns: <input type="number" name="maxY" min="6" max="20" value="8">
-        Randomization: <input type="number" name="randomization" min="1" max="1000" value="100">
-        <button type="submit">New Game</button>
-    </form>
-</div>
-<div id="board">
-    <table></table>
-    <div id="victory">
-        <h1>You Win!</h1>
+<div id="container">
+    <h1>Lights Out</h1>
+    <p>
+        Pressing any of the lights will toggle it and the adjacent lights. The goal of the game is to switch all the lights off.
+    </p>
+    <div id="settings">
+        <form>
+            <label>Rows:
+                <input type="number" name="maxX" min="6" max="20" value="8">
+            </label>
+            <label>Columns:
+                <input type="number" name="maxY" min="6" max="20" value="8">
+            </label>
+            <label>Entropy
+                <input type="number" name="entropy" min="1" max="1000" value="100">
+            </label>
+            <button type="submit">New Game</button>
+        </form>
+    </div>
+    <div id="game">
+        <table></table>
+        <div class="victory">
+            <h1>You Win!</h1>
+        </div>
     </div>
 </div>
 
