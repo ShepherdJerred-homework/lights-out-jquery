@@ -1,5 +1,10 @@
+#board {
+    z-index: 1;
+    position: relative;
+}
+
 #board .node {
-    padding: 40px;
+    padding: 20px;
     background: #000;
     border: 4px solid #fff;
 }
@@ -15,14 +20,28 @@
 
 #board table {
     border-collapse: collapse;
+    width: auto;
 }
 
 #victory {
     display: none;
+    position: absolute;
+    z-index: 2;
     width: 100%;
     height: 100%;
+    background: rgba(77, 77, 77, .75);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
-#victory .active {
-    display: block;
+#victory h1 {
+    color: #fff;
+}
+
+#victory.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

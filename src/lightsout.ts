@@ -18,6 +18,7 @@ $(() => {
     hideVictory();
     initializeGame();
   });
+  form.trigger('submit');
 });
 
 function clearBoard () {
@@ -175,11 +176,6 @@ function toggleAdjacent (game: Game, x: number, y: number) {
   for (let c of coordinatesToToggle) {
     toggle(game, c);
   }
-
-  // let nodeTopRight;
-  // let nodeTopLeft;
-  // let nodeBottomRight;
-  // let nodeBottomLeft;
 }
 
 function toggle (game: Game, c: Coordinate) {
@@ -200,7 +196,7 @@ function hasWon (game: Game): boolean {
   for (let row of game.board) {
     for (let rowNode of row) {
       if (rowNode.hasClass('on')) {
-        return false;
+        return true;
       }
     }
   }
