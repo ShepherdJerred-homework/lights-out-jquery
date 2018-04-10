@@ -2,7 +2,7 @@
   "name": "lights-out-jquery",
   "version": "1.0.0",
   "description": "Lights Out for the browser with jQuery",
-  "main": "index.js",
+  "main": "npm run build",
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "watch": "tsc -w -p tsconfig.json",
